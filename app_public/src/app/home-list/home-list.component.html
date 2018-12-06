@@ -1,0 +1,36 @@
+<div class="card">
+    <h3>Food in My Fridge:</h3>
+<!--    <div class="card-block col-md-5 ">
+        <ul class="list-group">
+            <li  *ngFor="let food of food" class="list-group-item">
+                <h4><a>{{food.name}}</a></h4>
+                <h5>Date: {{food.date|date}} </h5> <h5> Expiry Date: {{food.expiry|date}}</h5>
+                <h5>Left Over: {{food.left_overs}} &nbsp; Quantity: {{food.quantity}}</h5>
+                <button class="btn btn-info" (click)="updateContact(contact)">Edit</button>
+		        <button class="btn btn-danger" (click)="deleteContact(contact._id)">Delete</button>
+            </li>
+        </ul>
+    </div> -->	
+    
+    <div class="col-md-5">
+    <button class="btn btn-warning" (click)="createNewFood()">New</button>
+    <br/>
+	<ul class="list-group" >
+		<li class="list-group-item"
+			*ngFor="let food of foods"
+            [ngClass]="{'active': selectedItem == item}"
+			(click)="selectFood(food,$event, item)">
+			{{food.name}}
+		</li>
+	</ul>
+    </div>
+	<div class="col-md-5 col-md-offset-2">
+		<app-food-details-component
+			[food]="selectedFood"
+			[createHandler]="addFood"
+			[updateHandler]="updateFood"
+			[deleteHandler]="deleteFood">
+		</app-food-details-component>
+	</div>
+</div>
+        

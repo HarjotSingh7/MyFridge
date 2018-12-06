@@ -1,0 +1,34 @@
+<div *ngIf="food" class="row">
+	<div class="col-md-12">
+		<h2 *ngIf="food._id">Contact Details</h2>
+		<h2 *ngIf="!food._id">New Contact</h2>
+	</div>
+</div>
+<div *ngIf="food" class="row">
+	<form class="col-md-12">
+		<div class="form-group">
+			<label for="food-name">Name</label>
+			<input class="form-control" name="food-name" [(ngModel)]="food.name" placeholder="Name"/>
+		</div>
+		<div class="form-group">
+			<label for="food-date">Date</label>
+			<input class="form-control" name="food-date" [(ngModel)]="food.date" placeholder="Date"/>
+		</div>
+        <div class="form-group">
+			<label for="food-dateExp">Expiry Date</label>
+			<input class="form-control" name="food-dateExp" [(ngModel)]="food.expiry" placeholder="Expiry Date"/>
+		</div>
+        <div class="form-group">
+			<label for="food-leftOver">Left Over</label>
+			<input class="form-control" name="food-leftOver" [(ngModel)]="food.left_overs" placeholder="Left Over"/>
+		</div>
+        <div class="form-group">
+			<label for="food-quantity">Quantity</label>
+			<input class="form-control" name="food-quantity" [(ngModel)]="food.quantity" placeholder="Quantity"/>
+		</div>        
+        
+		<button class="btn btn-primary" *ngIf="!food._id" (click)="createFood(food)">Add Food Item</button>
+		<button class="btn btn-info" *ngIf="food._id" (click)="updateFood(food)">Update Food Item</button>
+		<button class="btn btn-danger" *ngIf="food._id" (click)="deleteFood(food)">Delete Food Item </button>
+	</form>
+</div>
